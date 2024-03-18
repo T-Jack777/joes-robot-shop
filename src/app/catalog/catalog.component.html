@@ -1,17 +1,17 @@
 <div class="container">
     <div class="filters">
-      <button class ="button" (click)="filter='Heads'">Head</button>
-      <button class="button"(click)="filter='Arms'">Arms</button>
-      <button class="button"(click)="filter='Torsos'">Torsos</button>
-      <button class="button"(click)="filter='Bases'">Bases</button>
-      <button class="button"(click)="filter=''">All</button>
+      <button class="button" (click)="getFilteredProducts('Heads')">Head</button>
+      <button class="button" (click)="getFilteredProducts('Arms')">Arms</button>
+      <button class="button" (click)="getFilteredProducts('Torsos')">Torsos</button>
+      <button class="button" (click)="getFilteredProducts('Bases')">Bases</button>
+      <button class="button" (click)="getFilteredProducts('')">All</button>
     </div>
   
     <ul class="products">
       <!-- you bind to events and execute statements with parenthesis
            you bind to expressions and data to the component with brackets -->
       <!-- structural directives have an asterisk -->
-      <div class="product-item" *ngFor="let product of getFilteredProducts()">
+      <div class="product-item" *ngFor="let product of products">
         <div class="product">
           <div class="product-details">
             <img [src]="getImageUrl(product)" [alt]="product.name" />
