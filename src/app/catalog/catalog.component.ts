@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product.model';
 import { ProductService } from '../services/product.service';
 import { cloneDeep } from 'lodash';
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'bot-catalog',
@@ -30,5 +31,9 @@ export class CatalogComponent implements OnInit {
     this.products = this.filter === ''
       ? this.products
       : this.products.filter((product) => product.category == filter);
+  }
+
+  getDiscountedPrice(product: IProduct): number {
+    return (product.price * (1 - product.discount));
   }
 }

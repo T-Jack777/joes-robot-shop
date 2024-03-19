@@ -17,12 +17,19 @@
             <img [src]="getImageUrl(product)" [alt]="product.name" />
             <div class="product-info">
               <div class="name">{{ product.name }}</div>
-              <div class="description">{{ product.description}}</div>
-              <div class="category">Part Type: {{ product.category}}</div>
+              <div class="description">{{ product.description }}</div>
+              <div class="category">Part Type: {{ product.category }}</div>
             </div>
           </div>
           <div class="price">
-            <div>${{product.price.toFixed(2)}}</div>
+            <ng-container *ngIf="product.discount === 0"> 
+              <div>{{ product.price.toFixed(2) }}</div>
+            </ng-container>
+            <ng-container *ngIf="product.discount > 0">
+              <div class="discount">
+                {{ getDiscountedPrice(product).toFixed(2) }}
+              </div>
+            </ng-container>
             <button class="cta">Buy</button>
           </div>
         </div>
